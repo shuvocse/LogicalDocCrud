@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"></meta>
+    <title>Title</title><style>
+table, th, td {
+    border: 2px solid black;
+}
+</style>
+</head>
+<body>
+<a th:href="@{/createFolder/}"><button>Create Folder</button></a>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody th:if="${folderList != null}">
+    <tr th:each="folder : ${folderList}">
+        <td th:text="${folder.folderID}"></td>
+        <td th:text="${folder.folderName}"></td>
+        <td>
+            <a th:href="@{|/renameFolder/${folder.folderID}|}"><button>Rename</button></a>
+            <a th:href="@{|/deleteFolder/${folder.folderID}|}"><button onclick="confirm('Want to delete?')">Delete</button></a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

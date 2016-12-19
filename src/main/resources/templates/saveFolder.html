@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"></meta>
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{${folderURL}}" th:object="${folderDTO}" method="post">
+    <input type="hidden" th:if="${folderID != null}" th:field="*{folderID}"></input>
+    <table>
+        <tr>
+            <td>Folder Name</td>
+            <td><input type="text" th:field="*{folderName}"></input></td>
+        </tr>
+        <tr th:if="${#fields.hasErrors('folderName')}">
+            <td COLSPAN="2" th:errors="*{folderName}">ERRORS: </td>
+        </tr>
+        <tr>
+            <td><input type="submit"></input></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
